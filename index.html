@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ligaya Beebe — Listening Tour Supplement</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1F2B27;
+    --ink-mid: #3d4e49;
+    --ink-light: #8a9e98;
+    --ink-faint: #d8e0de;
+    --cream: #f7f2ed;
+    --warm-white: #fdf9f6;
+    --accent: #7BBFB5;
+    --accent-light: #eaf5f3;
+    --accent-mid: #a8d4ce;
+    --terracotta: #C17A5A;
+    --rule: #1F2B27;
+  }
+
+  @media print {
+    body { background: white !important; }
+    .page { box-shadow: none !important; max-width: 100% !important; margin: 0 !important; border-radius: 0 !important; }
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ece4da;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: var(--ink);
+  }
+
+  .page {
+    background: var(--warm-white);
+    max-width: 760px;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 2px 40px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 40px 48px 36px;
+    position: relative;
+  }
+
+  .header-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .header-sub {
+    font-size: 13px;
+    font-weight: 300;
+    color: #c4b8ae;
+    margin-top: 10px;
+    line-height: 1.6;
+    max-width: 540px;
+  }
+
+  .header-meta {
+    position: absolute;
+    top: 40px;
+    right: 48px;
+    text-align: right;
+  }
+
+  .header-meta p {
+    font-size: 11px;
+    color: #c4b8ae;
+    line-height: 1.8;
+  }
+
+  .header-meta strong {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  /* ── BODY ── */
+  .body {
+    padding: 40px 48px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 34px;
+  }
+
+  .section-label {
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--ink-faint);
+  }
+
+  /* ── NARRATIVE ── */
+  .narrative {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-mid);
+    margin-bottom: 16px;
+  }
+
+  .narrative strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .narrative em {
+    font-style: italic;
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ink-faint);
+    border: 0.5px solid var(--ink-faint);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+
+  .stat {
+    background: var(--warm-white);
+    padding: 16px 14px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-lbl {
+    font-size: 10.5px;
+    font-weight: 400;
+    color: var(--ink-light);
+    line-height: 1.4;
+  }
+
+  /* ── STRENGTH BARS ── */
+  .strength-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .strength-item {
+    display: grid;
+    grid-template-columns: 180px 1fr 28px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .strength-name {
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .bar-track {
+    height: 6px;
+    background: var(--ink-faint);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--accent);
+  }
+
+  .bar-fill.secondary { background: var(--accent-mid); }
+
+  .bar-n {
+    font-size: 11px;
+    color: var(--ink-light);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── QUOTE GRID ── */
+  .quote-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .quote-item {
+    border-left: 2px solid var(--terracotta);
+    padding: 10px 14px;
+    background: var(--accent-light);
+    border-radius: 0 3px 3px 0;
+  }
+
+  .quote-item p {
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+    font-style: italic;
+    margin-bottom: 5px;
+  }
+
+  .quote-attr {
+    font-size: 10px;
+    color: var(--terracotta);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-style: normal;
+  }
+
+  /* ── OUTCOME BOX ── */
+  .outcome-box {
+    border: 1px solid var(--ink-faint);
+    border-top: 2px solid var(--terracotta);
+    border-radius: 3px;
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background: var(--cream);
+  }
+
+  .outcome-col-label {
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 10px;
+  }
+
+  .outcome-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .outcome-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .outcome-dot.gray { background: var(--ink-faint); border: 1px solid var(--ink-light); }
+
+  .outcome-text {
+    font-size: 12.5px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 0.5px solid var(--ink-faint);
+    padding: 18px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer p {
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .footer strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-meta">
+      <p>Ligaya Beebe, PMP</p>
+      <p><strong>lb@lbeebe.com</strong></p>
+      <p>linkedin.com/in/ligaya-beebe</p>
+    </div>
+    <p class="header-eyebrow">Cover letter supplement</p>
+    <h1>Before I wrote my resume,<br><em>I ran a listening tour.</em></h1>
+    <p class="header-sub">This document is a brief account of that process — who I talked to, what they said, and how their feedback shaped how I positioned myself as a candidate.</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SECTION 1: The Method -->
+    <div class="section">
+      <p class="section-label">The method</p>
+      <p class="narrative">
+        Before tailoring a single resume bullet, I ran a structured <strong>Reverse Exit Interview and Golden Question process</strong> — a methodology for gathering candid, direct feedback from former colleagues, collaborators, and clients. This was my listening tour.
+      </p>
+      <p class="narrative">
+        Over several weeks, I held <strong>13 conversations</strong> with people who had worked alongside me across different roles and contexts — program staff, partner leads, clients, and peers in adjacent industries. Each conversation followed the same framework: <em>what did I do well, what could I have done better, and if you were in my shoes, how would you approach this search?</em>
+      </p>
+      <p class="narrative">
+        I took raw notes. Then I coded them. The patterns you see below are not self-assessment — <strong>they are what the people I worked with actually said.</strong>
+      </p>
+    </div>
+
+    <!-- STAT ROW -->
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-num">13</div>
+        <div class="stat-lbl">colleagues<br>interviewed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-lbl">strength themes<br>surfaced</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-lbl">strengths cross-<br>validated by 5+</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">1</div>
+        <div class="stat-lbl">clear signal,<br>every conversation</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: What they said -->
+    <div class="section">
+      <p class="section-label">What they said — validated strengths</p>
+
+      <div class="strength-list" style="margin-bottom: 22px;">
+        <div class="strength-item">
+          <span class="strength-name">People &amp; relationship-centered</span>
+          <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+          <span class="bar-n">11</span>
+        </div>
+        <div class="strength-item">
+          <span class="strength-name">Clear, direct communicator</span>
+          <div class="bar-track"><div class="bar-fill" style="width:77%"></div></div>
+          <span class="bar-n">10</span>
+        </div>
+        <div class="strength-item">
+          <span class="strength-name">Systems &amp; process builder</span>
+          <div class="bar-track"><div class="bar-fill secondary" style="width:62%"></div></div>
+          <span class="bar-n">8</span>
+        </div>
+        <div class="strength-item">
+          <span class="strength-name">Collaborative problem-solver</span>
+          <div class="bar-track"><div class="bar-fill secondary" style="width:54%"></div></div>
+          <span class="bar-n">7</span>
+        </div>
+        <div class="strength-item">
+          <span class="strength-name">Big-picture + detail fluency</span>
+          <div class="bar-track"><div class="bar-fill secondary" style="width:46%"></div></div>
+          <span class="bar-n">6</span>
+        </div>
+        <div class="strength-item">
+          <span class="strength-name">Empowering to direct reports</span>
+          <div class="bar-track"><div class="bar-fill secondary" style="width:38%"></div></div>
+          <span class="bar-n">5</span>
+        </div>
+        <div class="strength-item">
+          <span class="strength-name">Thoughtful / non-reactive</span>
+          <div class="bar-track"><div class="bar-fill secondary" style="width:38%"></div></div>
+          <span class="bar-n">5</span>
+        </div>
+      </div>
+
+      <div class="quote-grid">
+        <div class="quote-item">
+          <p>"I didn't come out of a meeting and think — what was that. It was clear."</p>
+          <span class="quote-attr">— Alexander, former direct report</span>
+        </div>
+        <div class="quote-item">
+          <p>"You were really present. Active listening, asking questions for understanding — a very rare skill."</p>
+          <span class="quote-attr">— Signe, former partner lead</span>
+        </div>
+        <div class="quote-item">
+          <p>"Your process-orientation was really good at preserving information and helping to usher new people into the organization."</p>
+          <span class="quote-attr">— Ose, former colleague</span>
+        </div>
+        <div class="quote-item">
+          <p>"You can speak to the reality of education and how you measure it. We need more of that."</p>
+          <span class="quote-attr">— Devin, EdTech founder</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: What I did with it -->
+    <div class="section">
+      <p class="section-label">What I did with it</p>
+      <p class="narrative" style="margin-bottom: 18px;">
+        The listening tour fed directly into my <strong>Mnookin Two-Pager</strong> — a structured self-assessment framework that asks you to name what energizes you, what drains you, and what you're actually good at. What my colleagues said became the evidence base for what I wrote down. Their words confirmed some things I suspected, sharpened others, and gave me permission to stop hedging on a few more. The result wasn't just a resume framing exercise — <em>it became the organizing logic for how I tell my story and where I focus my energy.</em>
+      </p>
+
+      <div class="outcome-box">
+        <div>
+          <p class="outcome-col-label">What I confirmed</p>
+          <div class="outcome-item">
+            <div class="outcome-dot"></div>
+            <p class="outcome-text">I build relationships and systems — and the best roles let me do both at once</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-dot"></div>
+            <p class="outcome-text">My education domain knowledge is a differentiator in tech</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-dot"></div>
+            <p class="outcome-text">One-to-many programs and communities of practice are where I do my best work</p>
+          </div>
+        </div>
+        <div>
+          <p class="outcome-col-label">What I'm working on</p>
+          <div class="outcome-item">
+            <div class="outcome-dot gray"></div>
+            <p class="outcome-text">More explicit delegation — naming steps, not just outcomes</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-dot gray"></div>
+            <p class="outcome-text">Earlier, more direct feedback when something isn't working</p>
+          </div>
+          <div class="outcome-item">
+            <div class="outcome-dot gray"></div>
+            <p class="outcome-text">Clearer signaling when decisions come from above vs. from me</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>This supplement accompanies my resume and cover letter.<br>
+    <strong>Ligaya Beebe, PMP</strong> · AI Enablement &amp; Program Manager · Estero, FL (Open to relocation) </p>
+    <a class="footer-link" href="https://lbeebe.com">lbeebe.com ↗</a>
+  </div>
+
+</div>
+</body>
+</html>
